@@ -35,7 +35,7 @@ const translations = {
 
     "portfolio.p1.desc": "Modelo de Machine Learning (Random Forest) com foco em explicabilidade para análise de risco financeiro.",
     "portfolio.p2.desc": "Sistema corporativo de agendamento e controle de escalas para a Advocacia-Geral da União.",
-    "portfolio.p3.desc": "Modularização do módulo de abastecimento e transição de sistema legado.",
+    "portfolio.p3.desc": "Modularização e transição de sistema legado.",
     "about.stat1":     "Projetos",
     "about.stat2":     "Anos",
     "about.stat3":     "Experiência",
@@ -52,6 +52,7 @@ const translations = {
     "contact.titleA":  "Vamos criar",
     "contact.titleB":  "algo?",
     "contact.tagline": "Aberta a projetos, freelas e colaborações.",
+    "contact.tagline2": "Entre em contato comigo por:",
     "contact.available":"Disponível para projetos",
 
     "footer.made":     "Feito com código, café e muito roxo",
@@ -92,7 +93,7 @@ const translations = {
 
     "portfolio.p1.desc": "Machine Learning model (Random Forest) focusing on explainability for financial risk analysis.",
     "portfolio.p2.desc": "Corporate scheduling and shift control system for the Attorney General's Office.",
-    "portfolio.p3.desc": "Refactoring of the supply module and transition from legacy systems.",
+    "portfolio.p3.desc": "Refactoring and transition from legacy systems.",
     "about.stat1":     "Projects",
     "about.stat2":     "Years",
     "about.stat3":     "Experience",
@@ -109,6 +110,7 @@ const translations = {
     "contact.titleA":  "Let's build",
     "contact.titleB":  "something?",
     "contact.tagline": "Open to projects, freelance & collaborations.",
+    "contact.tagline2": "Contact me by:",
     "contact.available":"Available for projects",
 
     "footer.made":     "Built with code, coffee & purple vibes",
@@ -149,7 +151,7 @@ const translations = {
 
     "portfolio.p1.desc": "Modèle de Machine Learning (Random Forest) axé sur l'explicabilité para l'analyse des risques financiers.",
     "portfolio.p2.desc": "Système de planification et de contrôle des horaires pour le bureau du procureur général.",
-    "portfolio.p3.desc": "Refactorisation du module d'approvisionnement et transition des systèmes hérités.",
+    "portfolio.p3.desc": "Refactorisation et transition des systèmes hérités.",
     "about.stat1":     "Projets",
     "about.stat2":     "Ans",
     "about.stat3":     "Expérience",
@@ -166,6 +168,7 @@ const translations = {
     "contact.titleA":  "Créons",
     "contact.titleB":  "quelque chose?",
     "contact.tagline": "Ouverte aux projets, freelance et collaborations.",
+    "contact.tagline2": "Me contacter par:",
     "contact.available":"Disponible pour des projets",
 
     "footer.made":     "Fait avec du code, du café et du violet",

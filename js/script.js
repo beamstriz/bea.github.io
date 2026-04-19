@@ -1,13 +1,16 @@
 document.addEventListener('DOMContentLoaded', () => {
   'use strict';
 
+  /* ══════════════════════════════
+     CUSTOM CURSOR
+  ══════════════════════════════ */
   const initCursor = () => {
-    const dot = document.getElementById('cursorDot');
+    const dot   = document.getElementById('cursorDot');
     const trail = document.getElementById('cursorTrail');
     if (!dot || !trail || window.matchMedia('(pointer: coarse)').matches) return;
 
     let mouseX = 0, mouseY = 0;
-    let trailX = 0, trailY = 0;
+    let trailX  = 0, trailY  = 0;
 
     document.addEventListener('mousemove', e => {
       mouseX = e.clientX;
@@ -23,7 +26,6 @@ document.addEventListener('DOMContentLoaded', () => {
     };
     animateTrail();
 
-
     const hoverElements = 'a, button, .proj-card, .skill-card, .lang-btn, .badge';
     document.querySelectorAll(hoverElements).forEach(el => {
       el.addEventListener('mouseenter', () => document.body.classList.add('cursor-hover'));
@@ -31,18 +33,21 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   };
 
+  /* ══════════════════════════════
+     TERMINAL TYPEWRITER
+  ══════════════════════════════ */
   const initTerminal = () => {
-    const termCmd = document.getElementById('termCmd');
+    const termCmd    = document.getElementById('termCmd');
     const termOutput = document.getElementById('termOutput');
     if (!termCmd || !termOutput) return;
 
     const sequence = {
       cmd: 'ssh ana@portfolio -p 2026',
       lines: [
-        { text: '> Connecting to ana-mota-core...', cls: 't-out-line', delay: 400 },
-        { text: '✓ Authenticated (publickey)', cls: 't-out-line ok', delay: 900 },
+        { text: '> Connecting to ana-mota-core...',     cls: 't-out-line',    delay: 400  },
+        { text: '✓ Authenticated (publickey)',           cls: 't-out-line ok', delay: 900  },
         { text: '✓ Java Spring Boot environment ready', cls: 't-out-line ok', delay: 1200 },
-        { text: '» Welcome, Beatriz Soares_', cls: 't-out-line ac', delay: 1600 }
+        { text: '» Welcome, Ana Mota_',                 cls: 't-out-line ac', delay: 1600 }
       ]
     };
 
@@ -55,7 +60,7 @@ document.addEventListener('DOMContentLoaded', () => {
         sequence.lines.forEach(line => {
           setTimeout(() => {
             const div = document.createElement('div');
-            div.className = line.cls;
+            div.className   = line.cls;
             div.textContent = line.text;
             termOutput.appendChild(div);
             termOutput.scrollTop = termOutput.scrollHeight;
@@ -66,34 +71,62 @@ document.addEventListener('DOMContentLoaded', () => {
     setTimeout(typeCmd, 800);
   };
 
+  /* ══════════════════════════════
+     NAVIGATION — mobile menu
+  ══════════════════════════════ */
   const initNavigation = () => {
-    const nav = document.getElementById('mainNav');
+    const nav       = document.getElementById('mainNav');
     const navToggle = document.getElementById('navToggle');
-    const navLinks = document.getElementById('navLinks');
+    const navLinks  = document.getElementById('navLinks');
 
+    if (!nav || !navToggle || !navLinks) return;
 
+    // Scroll style
     window.addEventListener('scroll', () => {
       nav.classList.toggle('scrolled', window.scrollY > 50);
     }, { passive: true });
 
-
-    const toggleMenu = (state) => {
-      const isOpen = state !== undefined ? state : navLinks.classList.toggle('open');
-      navToggle.classList.toggle('open', isOpen);
-      document.body.style.overflow = isOpen ? 'hidden' : '';
+    // setMenu(true) = abrir, setMenu(false) = fechar
+    const setMenu = (open) => {
+      navLinks.classList.toggle('open', open);
+      navToggle.classList.toggle('open', open);
+      navToggle.setAttribute('aria-expanded', String(open));
+      document.body.style.overflow = open ? 'hidden' : '';
     };
 
-    navToggle.addEventListener('click', () => toggleMenu());
+    // Clique no hambúrguer: inverte estado atual
+    navToggle.addEventListener('click', () => {
+      setMenu(!navLinks.classList.contains('open'));
+    });
 
+    // Clique em qualquer link do menu: fecha
+    navLinks.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => setMenu(false));
+    });
 
-    document.querySelectorAll('.nav-links a').forEach(link => {
-      link.addEventListener('click', () => toggleMenu(false));
+    // Clique fora do drawer: fecha
+    document.addEventListener('click', e => {
+      if (
+        navLinks.classList.contains('open') &&
+        !navLinks.contains(e.target) &&
+        !navToggle.contains(e.target)
+      ) {
+        setMenu(false);
+      }
+    });
+
+    // Tecla Escape: fecha
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape' && navLinks.classList.contains('open')) {
+        setMenu(false);
+      }
     });
   };
 
+  /* ══════════════════════════════
+     SCROLL REVEAL
+  ══════════════════════════════ */
   const initScrollReveal = () => {
-    const observerOptions = { threshold: 0.15, rootMargin: '0px 0px -50px 0px' };
-    
     const revealObserver = new IntersectionObserver(entries => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -101,7 +134,7 @@ document.addEventListener('DOMContentLoaded', () => {
           revealObserver.unobserve(entry.target);
         }
       });
-    }, observerOptions);
+    }, { threshold: 0.15, rootMargin: '0px 0px -50px 0px' });
 
     document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(el => {
       revealObserver.observe(el);
@@ -119,13 +152,15 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.skill-card').forEach(card => skillObserver.observe(card));
   };
 
-
+  /* ══════════════════════════════
+     PROJECT CARD TILT
+  ══════════════════════════════ */
   const initCardTilt = () => {
     document.querySelectorAll('.proj-card').forEach(card => {
       card.addEventListener('mousemove', e => {
         const rect = card.getBoundingClientRect();
-        const x = (e.clientX - rect.left) / rect.width - 0.5;
-        const y = (e.clientY - rect.top) / rect.height - 0.5;
+        const x    = (e.clientX - rect.left) / rect.width  - 0.5;
+        const y    = (e.clientY - rect.top)  / rect.height - 0.5;
         card.style.transform = `perspective(1000px) rotateY(${x * 10}deg) rotateX(${y * -10}deg) translateY(-5px)`;
       });
       card.addEventListener('mouseleave', () => {
@@ -134,6 +169,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   };
 
+  // Boot
   initCursor();
   initTerminal();
   initNavigation();
