@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-lang="pt">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Portfólio criativo — Desenvolvedora de Software"/>
+  <title>Portfolio | Ana Mota</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Orbitron:wght@400;700;900&family=Fira+Code:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="css/style.css"/>
+</head>
+<body>
+
+  <div class="cursor-dot" id="cursorDot"></div>
+  <div class="cursor-trail" id="cursorTrail"></div>
+
+  <div class="noise-overlay" aria-hidden="true"></div>
+
+  <div class="grid-overlay" aria-hidden="true"></div>
+
+  <canvas id="heroCanvas"></canvas>
+
+  <nav id="mainNav">
+    <a href="#hero" class="nav-logo" aria-label="home">
+      <span class="logo-bracket">[</span>
+      <span class="logo-text">Ana Beatriz Mota</span>
+      <span class="logo-bracket">]</span>
+      <span class="logo-blink">_</span>
+    </a>
+
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#hero"        data-i18n="nav.home"><span class="nav-num">01.</span>Início</a></li>
+      <li><a href="#sobre"       data-i18n="nav.about"><span class="nav-num">02.</span>Sobre</a></li>
+      <li><a href="#habilidades" data-i18n="nav.skills"><span class="nav-num">03.</span>Skills</a></li>
+      <li><a href="#portfolio"   data-i18n="nav.portfolio"><span class="nav-num">04.</span>Projetos</a></li>
+      <li><a href="#contato"     data-i18n="nav.contact"><span class="nav-num">05.</span>Contato</a></li>
+    </ul>
+
+    <div class="nav-right">
+      <div class="lang-switcher">
+        <button class="lang-btn active" data-lang="pt">PT</button>
+        <span class="lang-sep">/</span>
+        <button class="lang-btn" data-lang="en">EN</button>
+        <span class="lang-sep">/</span>
+        <button class="lang-btn" data-lang="fr">FR</button>
+      </div>
+      <button class="nav-toggle" id="navToggle" aria-label="menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <section id="hero">
+    <div class="hero-content">
+
+      <div class="hero-text reveal-hero delay-2">
+        <div class="hero-eyebrow">
+          <span class="eyebrow-line"></span>
+          <span data-i18n="hero.tag">Desenvolvedora de Software</span>
+          <span class="eyebrow-line"></span>
+        </div>
+        <h1 class="hero-title">
+          <span class="hero-name glitch" data-text="Seu Nome">Ana Mota</span>
+        </h1>
+        <p class="hero-sub" data-i18n="hero.desc">
+          Crio soluções backend com <em>Java e Spring Boot</em>, focadas em <em>performance</em> e <em>escalabilidade</em>.
+        </p>
+        <div class="hero-cta">
+          <a href="#portfolio" class="btn-primary" data-i18n="hero.cta1">
+            <span>Ver Projetos</span>
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <a href="#contato" class="btn-ghost" data-i18n="hero.cta2">Contato</a>
+        </div>
+        <div class="hero-stats">
+          <div class="hstat"><span class="hstat-n">3+</span><span class="hstat-l" data-i18n="hero.stat1">Projetos</span></div>
+          <div class="hstat-div"></div>
+          <div class="hstat"><span class="hstat-n">4+</span><span class="hstat-l" data-i18n="hero.stat2">Anos</span></div>
+          <div class="hstat-div"></div>
+          <div class="hstat"><span class="hstat-n">3+</span><span class="hstat-l" data-i18n="hero.stat3">Experiência</span></div>
+        </div>
+      </div>
+
+
+      <div class="terminal-window reveal-hero">
+        <div class="terminal-bar">
+          <span class="t-dot red"></span>
+          <span class="t-dot yellow"></span>
+          <span class="t-dot green"></span>
+          <span class="t-title">portfolio.exe</span>
+        </div>
+        <div class="terminal-body">
+          <div class="t-line"><span class="t-prompt">$</span> <span class="t-cmd" id="termCmd"></span><span class="t-cursor">█</span></div>
+          <div class="t-output" id="termOutput"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="scroll-hint">
+      <span data-i18n="hero.scroll">scroll</span>
+      <div class="scroll-line"></div>
+    </div>
+  </section>
+
+  <section id="sobre">
+    <div class="about-wrap">
+      <div class="about-left reveal-left">
+        <div class="avatar-shell">
+          <canvas id="avatarCanvas"></canvas>
+          <div class="avatar-ring ring1"></div>
+          <div class="avatar-ring ring2"></div>
+          <div class="avatar-frame">
+            <img src="assets/images/fotoPrinc.jpg" alt="Ana Mota" class="avatar-img">
+          </div>
+        </div>
+        <div class="tech-badges">
+          <span class="badge">Java</span>
+          <span class="badge">Spring Boot</span>
+          <span class="badge">GWT</span>
+          <span class="badge">PostgreSQL</span>
+          <span class="badge">Git</span>
+          <span class="badge">Docker</span>
+          <span class="badge">AWS Certified</span>
+          <span class="badge">React</span>
+        </div>
+      </div>
+
+      <div class="about-right reveal-right">
+        <div class="sec-eyebrow" data-i18n="about.tag">_sobre_mim</div>
+      
+      <h2 class="sec-title">
+        <span data-i18n="about.titleA">Perfil Técnico</span><br>
+        <em data-i18n="about.titleB">&lt;dev_info&gt;</em>
+      </h2>
+        
+
+        <div class="code-block">
+          <div class="code-header"><span class="code-lang">JS</span> about.js</div>
+          <pre class="code-content"><span class="c-kw">const</span> <span class="c-var">me</span> = {
+  <span class="c-key">"introducao"</span>: <span class="c-str">"<span data-i18n="about.intro">Minha trajetória na tecnologia começou desde cedo, aos 14 anos, quando ingressei no Instituto Federal do Pará e me formei como técnica em Informática. Foi ali que tive meu primeiro contato com linguagens de programação, participei de projetos e comecei a desvendar diferentes áreas da tecnologias."</span>"</span>,
+
+  <span class="c-key">"formacao"</span>: <span class="c-str">"<span data-i18n="about.edu">Segui na área com a graduação em Ciência da Computação, onde aprofundei meus conhecimentos e desenvolvi uma base ainda mais sólida em desenvolvimento de software."</span>"</span>,
+
+  <span class="c-key">"primeiros_passos"</span>: <span class="c-str">"<span data-i18n="about.steps">Minha primeira experiência profissional foi como monitora, ensinando crianças no desenvolvimento de jogos e robótica. Uma fase que fortaleceu minha comunicação e didática."</span>"</span>,
+
+  <span class="c-key">"experiencia_agu"</span>: <span class="c-str">"<span data-i18n="about.agu">Depois disso, atuei como estagiária na Advocacia-Geral da União por dois anos, participando de diversos projetos. Um dos principais foi o PACE 2.0, um sistema de agendamento e controle de escalas, onde trabalhei diretamente com Java e Spring Boot no desenvolvimento e evolução da aplicação."</span>"</span>,
+
+  <span class="c-key">"atuacao_atual"</span>: <span class="c-str">"<span data-i18n="about.current">Hoje, atuo no desenvolvimento de sistemas em uma empresa de monitoramento de veículos, trabalhando com Java e GWT na refatoração de uma aplicação legada, melhorando estrutura, desempenho e manutenção do sistema."</span>"</span>,
+
+  <span class="c-key">"cetificacao_e_objetivo"</span>: <span class="c-str">"<span data-i18n="about.certification">Também possuo certificação AWS Cloud Practitioner e continuo em constante evolução, buscando sempre construir soluções eficientes, bem estruturadas e que façam sentido no contexto que são aplicadas."</span>"</span>,
+};</pre>
+        </div>
+
+        <div class="about-stats">
+          <div class="stat-item reveal delay-1"><span class="stat-n">3+</span><span class="stat-l" data-i18n="about.stat1">Projetos</span></div>
+          <div class="stat-item reveal delay-2"><span class="stat-n">4+</span><span class="stat-l" data-i18n="about.stat2">Anos</span></div>
+          <div class="stat-item reveal delay-3"><span class="stat-n">3+</span><span class="stat-l" data-i18n="about.stat3">Experiência</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="habilidades">
+  <div class="sec-header reveal">
+    <div class="sec-eyebrow" data-i18n="skills.tag">_habilidades</div>
+    <h2 class="sec-title"><span data-i18n="skills.titleA">O que eu</span> <em data-i18n="skills.titleB">faço</em></h2>
+  </div>
+
+  <div class="skills-grid">
+    <div class="skill-card reveal">
+      <div class="sk-icon-wrap"><span class="sk-icon">☕</span></div>
+      <div class="sk-name">Backend Java</div>
+      <div class="sk-desc" data-i18n="skills.s1.desc">Construção de APIs escaláveis e arquitetura de microsserviços.</div>
+      <div class="sk-bar-wrap"><div class="sk-bar" data-w="90%"><span class="sk-pct">90%</span></div></div>
+      <div class="sk-tools">Spring Boot · Hibernate · GWT</div>
+    </div>
+
+    <div class="skill-card reveal delay-2" data-skill="85">
+      <div class="sk-icon-wrap"><span class="sk-icon">📱</span></div>
+      <div class="sk-name">Mobile Development</div>
+      <div class="sk-desc" data-i18n="skills.s2.desc">Criação de aplicativos Android com foco em performance.</div>
+      <div class="sk-bar-wrap"><div class="sk-bar" data-w="85%"><span class="sk-pct">85%</span></div></div>
+      <div class="sk-tools">Kotlin · Jetpack Compose · Ktor</div>
+    </div>
+
+    <div class="skill-card reveal delay-3" data-skill="95">
+      <div class="sk-icon-wrap"><span class="sk-icon">⚙️</span></div>
+      <div class="sk-name">Refatoração & Legado</div>
+      <div class="sk-desc" data-i18n="skills.s3.desc">Modernização de sistemas e melhoria de performance em código Java.</div>
+      <div class="sk-bar-wrap"><div class="sk-bar" data-w="95%"><span class="sk-pct">95%</span></div></div>
+      <div class="sk-tools">Clean Code · Design Patterns · Modularização</div>
+    </div>
+
+    <div class="skill-card reveal delay-1" data-skill="75">
+      <div class="sk-icon-wrap"><span class="sk-icon">☁️</span></div>
+      <div class="sk-name">Cloud & Infrastructure</div>
+      <div class="sk-desc" data-i18n="skills.s4.desc">Deploy e gerenciamento de aplicações em ambiente escalável.</div>
+      <div class="sk-bar-wrap"><div class="sk-bar" data-w="75%"><span class="sk-pct">75%</span></div></div>
+      <div class="sk-tools">AWS · Docker · Git/Gitflow</div>
+    </div>
+
+    <div class="skill-card reveal delay-2" data-skill="70">
+      <div class="sk-icon-wrap"><span class="sk-icon">🤖</span></div>
+      <div class="sk-name">AI & Data Science</div>
+      <div class="sk-desc" data-i18n="skills.s5.desc">Implementação de modelos de ML para análise de dados.</div>
+      <div class="sk-bar-wrap"><div class="sk-bar" data-w="70%"><span class="sk-pct">70%</span></div></div>
+      <div class="sk-tools">Random Forest · XAI · Python</div>
+    </div>
+  </div>
+</section>
+
+  <section id="portfolio">
+    <div class="sec-header reveal">
+      <div class="sec-eyebrow" data-i18n="portfolio.tag">_projetos</div>
+      <h2 class="sec-title"> <em data-i18n="portfolio.titleB">Projetos</em></h2>
+      <a href="#contato" class="btn-ghost btn-sm" data-i18n="portfolio.viewAll">Ver tudo →</a>
+    </div>
+
+    <div class="proj-grid">
+
+  <article class="proj-card large reveal delay-1">
+    <div class="proj-thumb g1">
+      <div class="proj-image-wrapper">
+        <img src="assets/images/finScore.jpg" alt="FinScore" class="proj-img">
+      </div>
+      <div class="proj-overlay">
+        <span class="proj-year">2026</span>
+        <a href="#" class="proj-link">Saiba mais →</a>
+      </div>
+    </div>
+    <div class="proj-meta">
+      <span class="proj-tag">AI & FinTech</span>
+      <h3 class="proj-name">FinScore: Análise de Crédito com XAI</h3>
+      <p class="proj-short-desc" data-i18n="portfolio.p1.desc">Modelo de Machine Learning (Random Forest) com foco em explicabilidade para análise de risco financeiro.</p>
+    </div>
+  </article>
+
+  <article class="proj-card large reveal delay-2">
+  <div class="proj-thumb g2">
+    <div class="proj-image-wrapper pace-slide">
+      <img src="assets/images/pace1.png" alt="PACE 1" class="proj-img img-1">
+      <img src="assets/images/pace2.png" alt="PACE 2" class="proj-img img-2">
+      <img src="assets/images/pace3.png" alt="PACE 3" class="proj-img img-3">
+      <img src="assets/images/pace4.png" alt="PACE 4" class="proj-img img-4">
+    </div>
+    <div class="proj-overlay">
+      <span class="proj-year">2024</span>
+      <a href="#" class="proj-link">Saiba mais →</a>
+    </div>
+  </div>
+  <div class="proj-meta">
+    <span class="proj-tag">Java / Spring Boot</span>
+    <h3 class="proj-name">PACE 2.0 - AGU</h3>
+    <p class="proj-short-desc" data-i18n="portfolio.p2.desc">Sistema corporativo de agendamento e controle de escalas para a Advocacia-Geral da União.</p>
+  </div>
+</article>
+
+  <article class="proj-card reveal delay-3">
+    <div class="proj-thumb g4">
+      <canvas class="proj-canvas" data-type="ico"></canvas>
+      <div class="proj-overlay">
+        <span class="proj-year">2026</span>
+      </div>
+    </div>
+    <div class="proj-meta">
+      <span class="proj-tag">Arquitetura / GWT</span>
+      <h3 class="proj-name">Refatoração Autoview 10</h3>
+      <p class="proj-short-desc" data-i18n="portfolio.p3.desc">Modularização do módulo de abastecimento e transição de sistema legado para uma estrutura de microsserviços.</p>
+    </div>
+  </article>
+  </div>
+  </section>
+
+  <section id="contato">
+    <div class="contact-wrap">
+      <div class="contact-left reveal-left">
+        <div class="sec-eyebrow" data-i18n="contact.tag">_contato</div>
+        <h2 class="sec-title contact-title">
+          <span data-i18n="contact.titleA">Vamos criar</span><br>
+          <em data-i18n="contact.titleB">algo?</em>
+        </h2>
+        <p data-i18n="contact.tagline">Aberta a projetos, freelas e colaborações.</p>
+        <a href="mailto:seuemail@email.com" class="contact-email">anamtsoares2003@email.com</a>
+        <div class="social-row">
+          <a href="https://www.instagram.com/ana.motas/" class="social-btn">Instagram</a>
+          <a href="www.linkedin.com/in/anamotasoa" class="social-btn">LinkedIn</a>
+          <a href="https://github.com/beamstriz" class="social-btn">GitHub</a>
+        </div>
+      </div>
+      <div class="contact-right reveal-right">
+        <canvas id="contactCanvas"></canvas>
+        <div class="contact-status">
+          <span class="status-dot"></span>
+          <span data-i18n="contact.available">Disponível para projetos</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <span>✦</span>
+    <span>· 2025 · Mota Soares</span>
+    <span>✦</span>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="js/i18n.js"></script>
+  <script src="js/scene3d.js"></script>
+  <script src="js/script.js"></script>
+</body>
+</html>
