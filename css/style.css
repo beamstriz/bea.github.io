@@ -680,8 +680,7 @@ footer {
 
   .lang-switcher {
     display: flex;
-    margin-top: auto;
-    padding-top: 2rem;
+    padding-top: 1rem;
     gap: .5rem;
   }
   .lang-btn {
